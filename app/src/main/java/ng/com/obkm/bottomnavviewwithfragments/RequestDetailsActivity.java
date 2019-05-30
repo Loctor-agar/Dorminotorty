@@ -26,6 +26,10 @@ public class RequestDetailsActivity extends AppCompatActivity {
     private TextView status;
     private TextView description;
     private TextView date;
+    private TextView room;
+    private TextView author;
+    private TextView category;
+
 
     private Toolbar toolbarRq;
 
@@ -83,6 +87,16 @@ public class RequestDetailsActivity extends AppCompatActivity {
                 SimpleDateFormat simpledate = new SimpleDateFormat();
                 date = (TextView) findViewById(R.id.date_txt_request);
                 date.setText(simpledate.format(response.body().getDate()));
+
+                room = (TextView)findViewById(R.id.room_txt_request);
+                room.setText(response.body().getRoom());
+
+                author =(TextView)findViewById(R.id.author_txt_request);
+                author.setText(response.body().getAuthor());
+
+                category =(TextView)findViewById(R.id.category_txt_request);
+                category.setText(response.body().getCategory());
+
             }
 
             @Override

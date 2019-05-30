@@ -48,16 +48,7 @@ public class AddRequest extends AppCompatActivity {
         addButton =(Button)findViewById(R.id.save_btn);
         title = (EditText)findViewById(R.id.title_rq);
         description = (EditText)findViewById(R.id.desc_rq);
-        image_btn = (Button)findViewById(R.id.image_btn);
-        image_btn_add_rq = (ImageView)findViewById(R.id.imageView_add_rq);
 
-        image_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent,0);
-            }
-        });
 
 
         addButton.setOnClickListener(view -> {
@@ -72,12 +63,6 @@ public class AddRequest extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Bitmap bitmap = (Bitmap)data.getExtras().get("data");
-        image_btn_add_rq.setImageBitmap(bitmap);
-    }
 
     private void sendRequest(RequestModel request) {
         RequestsService requestsService = ApiClient.getClientInstance().create(RequestsService.class);

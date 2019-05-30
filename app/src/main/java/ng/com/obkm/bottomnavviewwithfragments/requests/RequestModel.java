@@ -15,11 +15,28 @@ public class RequestModel {
     public Date date;
     @SerializedName("status")
     public String status;
+    @SerializedName("room")
+    public String room;
+    @SerializedName("author")
+    public String author;
+    @SerializedName("category")
+    public String category;
 
     //Date()
 
     public RequestModel(){
 
+    }
+
+    public RequestModel(int id, String title, String description, Date date, String status, String room, String author, String category) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.status = status;
+        this.room = room;
+        this.author = author;
+        this.category = category;
     }
 
     public RequestModel(int id, String title, String description, Date date, String status) {
@@ -46,6 +63,30 @@ public class RequestModel {
         //this.status = status;
     }
 
+
+    public String getRoom() {
+        return room;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
     public String getTitle() {
         return title;
@@ -94,6 +135,9 @@ public class RequestModel {
                 ", description='" + description + '\'' +
                 ", date='" + date + '\'' +
                 ", status='" + status + '\'' +
+                ", room='" + room + '\'' +
+                ", author='" + author + '\'' +
+                ", category='" + category + '\'' +
                 '}';
     }
 }

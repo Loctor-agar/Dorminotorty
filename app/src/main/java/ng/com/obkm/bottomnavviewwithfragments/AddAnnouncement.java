@@ -45,21 +45,12 @@ public class AddAnnouncement extends AppCompatActivity {
         toolbar.setTitle("Create Announcement");
 
 
-        add_image_btn =(Button)findViewById(R.id.add_image_btn);
-        imageViewAnAdd = (ImageView)findViewById(R.id.imageViewAnAdd);
+
         addButton = (Button) findViewById(R.id.add_btn);
         title = (EditText) findViewById(R.id.editText3);
 
 
-        add_image_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent,"Select Picture"),REQUEST_CODE);
-            }
-        });
+
 
         addButton.setOnClickListener(view -> {
 

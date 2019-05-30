@@ -7,14 +7,62 @@ public class User {
     public String username;
     @SerializedName("password")
     public String password;
+    @SerializedName("firstName")
+    public String firstName;
+    @SerializedName("lastName")
+    public String lastName;
+    @SerializedName("accessToken")
+    public String accessToken;
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+    }
+
+    @SerializedName("role")
+    public String role;
 
     public User() {
+    }
+
+    public User(String username, String password,String role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
     }
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
 
     public String getUsername() {
         return username;

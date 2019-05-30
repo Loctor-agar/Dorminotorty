@@ -10,6 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
     private static Retrofit retrofit;
+//    public static final String BASE_URL = "https://arcane-crag-50943.herokuapp.com/";
     public static final String BASE_URL = "https://my-json-server.typicode.com/danchopon/myFakeAPI/";
 
     public static Retrofit getClientInstance() {

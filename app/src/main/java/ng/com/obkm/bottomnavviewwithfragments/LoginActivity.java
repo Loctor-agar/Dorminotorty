@@ -3,12 +3,14 @@ package ng.com.obkm.bottomnavviewwithfragments;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import ng.com.obkm.bottomnavviewwithfragments.announcements.AnnouncementModel;
 import ng.com.obkm.bottomnavviewwithfragments.models.User;
+import ng.com.obkm.bottomnavviewwithfragments.models.UserResponse;
 import ng.com.obkm.bottomnavviewwithfragments.services.AnnouncementService;
 import ng.com.obkm.bottomnavviewwithfragments.services.ApiClient;
 import ng.com.obkm.bottomnavviewwithfragments.services.UserClient;
@@ -56,7 +58,16 @@ public class LoginActivity extends AppCompatActivity {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                Toast.makeText(LoginActivity.this, "Welcome, " + response.body().getUsername(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(LoginActivity.this, "Welcome, " + response.body().getUsername(), Toast.LENGTH_SHORT).show();
+//                if (response.isSuccessful()) {
+//                    Log.d("UserResponse", "ROle: " + response.body().getRole());
+//                    Log.d("UserResponse", "ROle: " + response.body().getFirstName());
+//                    Log.d("UserResponse", "ROle: " + response.body().getLastName());
+//                    Log.d("UserResponse", "ROle: " + response.body().getAccessToken());
+//                } else {
+//                    Log.d("UserResponse", "Login not correct");
+//                }
+//                Log.d("UserResponse", "ROle: " + response.body().role);
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -64,7 +75,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<User> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "Something went wrong: " + t.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                Log.d("UserResponse", "ERROR: " + t.getMessage().toString());
             }
         });
+
     }
 }

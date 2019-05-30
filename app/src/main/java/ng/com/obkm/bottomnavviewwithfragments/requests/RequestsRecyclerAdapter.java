@@ -39,8 +39,6 @@ public class RequestsRecyclerAdapter extends RecyclerView.Adapter<RequestsRecycl
     @Override
     public RequestsRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.request_item, parent, false);
-
-
         return new ViewHolder(view);
     }
 
@@ -48,14 +46,21 @@ public class RequestsRecyclerAdapter extends RecyclerView.Adapter<RequestsRecycl
     public void onBindViewHolder(@NonNull RequestsRecyclerAdapter.ViewHolder holder, int position) {
         int id = home_list.get(position).getId();
         String title = home_list.get(position).getTitle();
-        String desc = home_list.get(position).getDescription();
+        //String desc = home_list.get(position).getDescription();
         Date date = home_list.get(position).getDate();
         String status = home_list.get(position).getStatus();
+        String room = home_list.get(position).getRoom();
+        String author = home_list.get(position).getAuthor();
+        String category = home_list.get(position).getCategory();
+
 
         holder.title.setText(title);
-        holder.desc.setText(desc);
+        //holder.desc.setText(desc);
         holder.date.setText(DateFormat.getDateInstance().format(date));
         holder.status.setText(status);
+        holder.room.setText(room);
+        holder.author.setText(author);
+        holder.category.setText(category);
 
 
     }
@@ -69,15 +74,19 @@ public class RequestsRecyclerAdapter extends RecyclerView.Adapter<RequestsRecycl
 
         private View mView;
         private TextView title;
-        private TextView desc;
+        private TextView author;
+        private TextView category;
+        private TextView room;
         private TextView date;
         private TextView status;
 
         public ViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
+            author = mView.findViewById(R.id.item_author);
+            category = mView.findViewById(R.id.item_category);
+            room = mView.findViewById(R.id.item_room);
             title = mView.findViewById(R.id.item_title);
-            desc = mView.findViewById(R.id.item_desc);
             date = mView.findViewById(R.id.item_date);
             status = mView.findViewById(R.id.item_status);
 

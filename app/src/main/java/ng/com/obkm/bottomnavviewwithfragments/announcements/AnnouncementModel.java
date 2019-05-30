@@ -18,9 +18,6 @@ public class AnnouncementModel {
     public AnnouncementModel(){
 
     }
-
-
-
     public AnnouncementModel(int id, String title, String desc, Date date) {
         this.id = id;
         this.title = title;

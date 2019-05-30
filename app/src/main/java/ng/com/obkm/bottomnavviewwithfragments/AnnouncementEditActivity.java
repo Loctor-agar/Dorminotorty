@@ -26,18 +26,6 @@ public class AnnouncementEditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_announcement_edit);
 
-        selectImagebtn =(Button) findViewById(R.id.change_image_btn);
-        imageView =(ImageView)findViewById(R.id.edit_image_an);
-
-        selectImagebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent,"Select Picture"),REQUEST_CODE);
-            }
-        });
 
         updateAnnouncement();
     }
