@@ -1,12 +1,16 @@
 package ng.com.obkm.bottomnavviewwithfragments;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import ng.com.obkm.bottomnavviewwithfragments.announcements.AnnouncementModel;
 import ng.com.obkm.bottomnavviewwithfragments.models.User;
@@ -24,6 +28,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etPassword;
     User user;
     private Button btn_sign_in;
+    SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +74,20 @@ public class LoginActivity extends AppCompatActivity {
 //                    Log.d("UserResponse", "Login not correct");
 //                }
 //                Log.d("UserResponse", "ROle: " + response.body().role);
+
+                String username = response.body().getUsername();
+                String firstName = response.body().getFirstName();
+                String lastName = response.body().getLastName();
+                String accessToken = response.body().getAccessToken();
+                String refreshToken = response.body().getRefreshToken();
+                String role = response.body().getRole();
+                User loggedUser = new User(username, firstName, lastName, accessToken, refreshToken, role);
+                SharedPreferences.Editor prefsEditor = mPrefs.edit();
+                Gson gson = new Gson();
+                String json = gson.toJson(loggedUser);
+                prefsEditor.putString("UserData", json);
+                prefsEditor.commit();
+
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
             }

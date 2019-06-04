@@ -13,9 +13,19 @@ public class User {
     public String lastName;
     @SerializedName("accessToken")
     public String accessToken;
+    @SerializedName("refreshToken")
+    public String refreshToken;
 
     public String getFirstName() {
         return firstName;
+    }
+
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
     }
 
     public void setFirstName(String firstName) {
@@ -43,10 +53,13 @@ public class User {
 
     public User() {
     }
-
-    public User(String username, String password,String role) {
+    
+    public User(String username, String firstName, String lastName, String accessToken, String refreshToken, String role) {
         this.username = username;
-        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.accessToken = accessToken;
+        this.refreshToken = refreshToken;
         this.role = role;
     }
 
